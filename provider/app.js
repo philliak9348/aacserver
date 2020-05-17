@@ -23,7 +23,7 @@ function rowToObject(row) {
     };
 }
 
-app.get('/Devices', (request, response) => {
+app.get('/aac/devices', (request, response) => {
     const query= 'SELECT * FROM DEVICES';
     connection.query(query, (error, rows) => {
         response.send({
@@ -33,7 +33,7 @@ app.get('/Devices', (request, response) => {
     });
 });
 
-app.get('/Boxes', (request, response) => {
+app.get('aac/boxes', (request, response) => {
     const query ='SELECT * FROM Boxes';
     connection.query(query, (error, rows) => {
         response.send({
@@ -43,7 +43,7 @@ app.get('/Boxes', (request, response) => {
     });
 });
 
-app.post('/Boxes', (requset,response) => {
+app.post('/aac/Boxes/:id/:text/:image', (requset,response) => {
     const query = 'INSERT INTO Boxes(id, text, image) VALUES (?,?,?)';
     const params = [request.body.id, request.body.text, request.body.image];
     connection.query(query, params, (error, result) => {
@@ -54,8 +54,8 @@ app.post('/Boxes', (requset,response) => {
     });
 });
 
-app.post('/Devices', (request,response) => {
-    const query = 'INSERT INTO Devices(id, name) VALUES (?,?)';
+app.post('/aac/devices/:id/:name', (request,response) => {
+    const query = 'INSERT INTO Devs(id, name) VALUES (?,?)';
     const param = [request.body.id, request.body.name];
     connection.query(query, params, (error, result) => {
         response.send({
@@ -65,4 +65,7 @@ app.post('/Devices', (request,response) => {
     });
 });
 
-const port = 3000;
+const port = 3443;
+app.listen(port, () => {
+    console.log("live")
+});
