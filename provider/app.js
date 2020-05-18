@@ -23,8 +23,8 @@ function rowToObject(row) {
     };
 }
 
-app.get('/aac/devices', (request, response) => {
-    const query= 'SELECT * FROM DEVICES';
+app.get('/aac/devs', (request, response) => {
+    const query= 'SELECT * FROM Devs';
     connection.query(query, (error, rows) => {
         response.send({
             ok:true,
@@ -43,7 +43,7 @@ app.get('aac/boxes', (request, response) => {
     });
 });
 
-app.post('/aac/Boxes/:id/:text/:image', (requset,response) => {
+app.post('/aac/putBox', (requset,response) => {
     const query = 'INSERT INTO Boxes(id, text, image) VALUES (?,?,?)';
     const params = [request.body.id, request.body.text, request.body.image];
     connection.query(query, params, (error, result) => {
@@ -54,7 +54,7 @@ app.post('/aac/Boxes/:id/:text/:image', (requset,response) => {
     });
 });
 
-app.post('/aac/devices/:id/:name', (request,response) => {
+app.post('/aac/putDev', (request,response) => {
     const query = 'INSERT INTO Devs(id, name) VALUES (?,?)';
     const param = [request.body.id, request.body.name];
     connection.query(query, params, (error, result) => {
