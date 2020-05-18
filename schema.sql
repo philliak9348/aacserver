@@ -1,0 +1,22 @@
+DROP TABLE IF EXISTS Devs;
+DROP TABLE IF EXISTS Boxes;
+DROP TABLE IF EXISTS Visuals;
+DROP TABLE IF EXISTS USERS;
+CREATE TABLE Devs (
+        id INTEGER PRIMARY KEY,
+        name VARCHAR(50)
+);
+CREATE TABLE Boxes (
+        id INTEGER,
+        text VARCHAR(15),
+        image LONGBLOB
+);
+CREATE TABLE Visuals(
+        ID INTEGER,
+        text VARCHAR(15),
+        iamge LONGBLOB
+CREATE TABLE USERS (
+        id INTEGER PRIMARY KEY
+);
+
+~
